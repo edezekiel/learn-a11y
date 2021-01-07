@@ -4,6 +4,16 @@ main {
   font-size: 16px;
 }
 
+.skip-link {
+  position: absolute;
+  left: 50%;
+  transform: translateY(-100%)
+}
+
+.skip-link:focus {
+  transform: translateY(0%)
+}
+
 main {
   height: 1000px;
   margin: 25px 0;
