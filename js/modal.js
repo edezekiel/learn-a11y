@@ -35,5 +35,9 @@ function tabTrap(e) {
       e.preventDefault();
       lastTabStop.focus();
     }
+  // Escape the modal
+  } else if (e.keyCode === 27) {
+    console.log(e);
+    close();
   }
 }
