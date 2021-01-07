@@ -6,8 +6,11 @@ var cancelButton = document.querySelector('.focus-modal-cancel');
 modalButton.addEventListener('click', open);
 cancelButton.addEventListener('click', close);
 
-// Get a list of tabbable elements here:
-// https://github.com/jkup/focusable
+const [firstTabStop, , , lastTabStop] = document.querySelectorAll('form > *')
+console.log(firstTabStop, lastTabStop);
+
+// firstTabStop.addEventListener('keydown', this.tabTrap);
+modal.addEventListener('keydown', this.tabTrap);
 
 function open() {
   // Show the modal and overlay
@@ -19,4 +22,11 @@ function close() {
   // Hide the modal and overlay
   modal.style.display = 'none';
   modalOverlay.style.display = 'none';
+}
+
+function tabTrap(e) {
+  if (e.keyCode === 9 && document.activeElement === lastTabStop) {
+    e.preventDefault();
+    firstTabStop.focus();
+  }
 }
