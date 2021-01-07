@@ -1,12 +1,12 @@
-var modal        = document.querySelector('.focus-modal');
-var modalButton  = document.querySelector('.focus-modal-button');
-var modalOverlay = document.querySelector('.focus-modal-overlay');
-var cancelButton = document.querySelector('.focus-modal-cancel');
+const modal        = document.querySelector('.focus-modal');
+const modalButton  = document.querySelector('.focus-modal-button');
+const modalOverlay = document.querySelector('.focus-modal-overlay');
+const cancelButton = document.querySelector('.focus-modal-cancel');
 
 modalButton.addEventListener('click', open);
 cancelButton.addEventListener('click', close);
 
-const [firstTabStop, , , lastTabStop] = document.querySelectorAll('form > *')
+const [firstTabStop, , , lastTabStop] = modal.querySelectorAll('form > *')
 
 modal.addEventListener('keydown', this.tabTrap);
 
@@ -22,9 +22,18 @@ function close() {
   modalOverlay.style.display = 'none';
 }
 
+// When modal is open, the tab key only selects focusable elements within the modal
 function tabTrap(e) {
-  if (e.keyCode === 9 && document.activeElement === lastTabStop) {
-    e.preventDefault();
-    firstTabStop.focus();
+  // Tab Key Pressed
+  if (e.keyCode === 9) {
+    // Forwards
+    if (document.activeElement === lastTabStop && !e.shiftKey) {
+      e.preventDefault();
+      firstTabStop.focus();
+    // Backwards
+    } else if (document.activeElement === firstTabStop && e.shiftKey) {
+      e.preventDefault();
+      lastTabStop.focus();
+    }
   }
 }
