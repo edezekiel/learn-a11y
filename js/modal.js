@@ -8,7 +8,6 @@ cancelButton.addEventListener('click', close);
 
 const [firstTabStop, , , lastTabStop] = document.querySelectorAll('form > *')
 
-// firstTabStop.addEventListener('keydown', this.tabTrap);
 modal.addEventListener('keydown', this.tabTrap);
 
 function open() {
