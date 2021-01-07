@@ -14,6 +14,10 @@ function open() {
   // Show the modal and overlay
   modal.style.display = 'block';
   modalOverlay.style.display = 'block';
+
+  // Automatically focus on first focusable element within the modal
+  // This also allows user to immediately escape with the escape key
+  firstTabStop.focus();
 }
 
 function close() {
@@ -37,7 +41,6 @@ function tabTrap(e) {
     }
   // Escape the modal
   } else if (e.keyCode === 27) {
-    console.log(e);
     close();
   }
 }
