@@ -1,4 +1,4 @@
-let count = document.querySelector('#count');
+const count = document.querySelector('#count');
 const inc = document.querySelector('#inc');
 const dec = document.querySelector('#dec');
 inc.addEventListener('click', _increment);
